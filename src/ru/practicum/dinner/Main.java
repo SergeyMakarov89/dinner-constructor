@@ -53,7 +53,7 @@ public class Main {
         scanner.nextLine();
 
         System.out.println("Сейчас есть следущие типы блюд");
-        for (String dishType : dc.DinConstruct.keySet()) {
+        for (String dishType : dc.dinConstruct.keySet()) {
             System.out.println(dishType);
         }
 
@@ -63,18 +63,15 @@ public class Main {
 
         //реализуйте ввод типов блюд
         while (!nextItem.isEmpty()) {
-            if (dc.DinConstruct.containsKey(nextItem)) {
+            if (dc.dinConstruct.containsKey(nextItem)) {
                 dishTypeList.add(nextItem);
                 nextItem = scanner.nextLine();
-            } else {
+             } else {
                 System.out.println("Такого типа блюда нет, введите тип блюда заново из списка имеющихся типов");
                 nextItem = scanner.nextLine();
             }
-
         }
-
         dc.generateDishCombo(numberOfCombos, dishTypeList);
         // сгенерируйте комбинации блюд и выведите на экран
-
     }
 }

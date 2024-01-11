@@ -2,27 +2,37 @@ package ru.practicum.dinner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class DinnerConstructor {
-    HashMap<String, ArrayList<String>> DinConstruct;
+    HashMap<String, ArrayList<String>> dinConstruct;
+    Random random = new Random();
 
     DinnerConstructor() {
-        DinConstruct = new HashMap<>();
+        dinConstruct = new HashMap<>();
     }
 
     void addNewDish(String dishType, String dishName) {
-        if (DinConstruct.containsKey(dishType)) {
-            ArrayList<String> dishes = DinConstruct.get(dishType);
+        if (dinConstruct.containsKey(dishType)) {
+            ArrayList<String> dishes = dinConstruct.get(dishType);
             dishes.add(dishName);
-            DinConstruct.put(dishType, dishes);
+            dinConstruct.put(dishType, dishes);
         } else {
             ArrayList<String> dishes = new ArrayList<>();
             dishes.add(dishName);
-            DinConstruct.put(dishType, dishes);
+            dinConstruct.put(dishType, dishes);
         }
     }
 
+    String dish = "";
     void generateDishCombo(int numberOfCombos, ArrayList<String> dishTypeList) {
-
+        for (int i = 0; i < numberOfCombos; i++) {
+            System.out.println("Комбо №" + (i + 1));
+                for (String dishType : dishTypeList) {
+                    ArrayList<String> dishes = dinConstruct.get(dishType);
+                        dish = dishes.get(random.nextInt(dishes.size())) ;
+                        System.out.println(dish);
+                }
+        }
     }
 }
